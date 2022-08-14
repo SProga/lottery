@@ -1,0 +1,109 @@
+*,
+*::after,
+*::before {
+	padding: 0;
+	margin: 0;
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Montserrat", sans-serif;
+	height: 100%;
+	background-color: rgb(238, 235, 231);
+}
+
+a,
+a:visited,
+a:link {
+	/* code here */
+	text-decoration: underline;
+}
+
+.container {
+	max-width: 114rem;
+	padding: 0 2rem;
+	margin: 0 auto;
+}
+
+button {
+	cursor: pointer;
+}
+
+.mega_six_container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	gap: 100px;
+	margin-top: 60px;
+	padding-bottom: 100px;
+}
+
+.number {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 78px;
+	width: 78px;
+	background-color: blue;
+	color: white;
+	border-radius: 50%;
+	font-size: 34px;
+	font-weight: 600;
+}
+
+.number_wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 0 0 25%;
+}
+.occurrences {
+	font-size: 20px;
+	text-align: center;
+}
+
+.heading {
+	position: relative;
+	background: #0f0c29; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#24243e,
+		#302b63,
+		#0f0c29
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	color: white;
+	text-align: center;
+	padding: 20px;
+	margin: 0;
+}
+
+.text_highlight {
+	background-color: #c9b128;
+	padding: 20px;
+}
+.file_input {
+	font-size: 20px;
+	cursor: pointer;
+	font-weight: bold;
+}
+.btn_open {
+	background-color: #3a6ea5;
+}
+
+.img_logo {
+	width: 54px;
+	transform: translateX(-50%);
+}
+
+.occurrences_text {
+	font-size: 32px;
+}
