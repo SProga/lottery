@@ -5,6 +5,7 @@
 	//input event Handler
 	input.addEventListener("change", () => {
 		let files = input.files; //property of the <input type="file" /> element that returns an array of file(s) uploaded
+
 		if (files.length == 0) return; //if the length of the array is zero return.
 		const file = files[0]; //get the file at index 0 which will be the file which was uploaded
 		let reader = new FileReader(); //https://developer.mozilla.org/en-US/docs/Web/API/FileReader/onload
@@ -15,7 +16,6 @@
 			// e will hold the file that was passed in
 			const file = e.target.result; //the file will always be stored in this property on the e.target (object)
 			const lines = file.split(/\r\n|\n/); //split the file by return carriage or by newline which will return an array of split values
-
 			let arr = [];
 			for (let x = 0; x < lines.length; x++) {
 				let current_line = lines[x].trim();
@@ -26,13 +26,13 @@
 		};
 		reader.onerror = (e) => alert(e.target.error.name); // if an error occured
 	});
-	let occurrences = {};
 	function calculateOccurrence(arr = []) {
+		let occurrences = {};
 		arr.forEach((lottery_game) => {
 			try {
 				lottery_game.forEach((num) => {
 					if (isNaN(num)) {
-						throw new Error("Invalid tokens found in file");
+						throw new Error("Invalid token found");
 					}
 					if (!occurrences[num]) {
 						occurrences[num] = 0;
@@ -90,14 +90,17 @@
 		let r = Math.floor(Math.random() * 255);
 		let g = Math.floor(Math.random() * 255);
 		let b = Math.floor(Math.random() * 255);
-		$number.css("background-color", `rgb(${r},${g},${b})`);
 		let total = r + g + b;
 		if (total > 382) {
 			$number.css("color", `black`);
 		}
+		if (total > 690) {
+			randomColor($number);
+		}
+		$number.css("background-color", `rgb(${r},${g},${b})`);
 	}
 
 	$app.on("click", ".btn_close", function () {
-		location.reload();
+		location.reload(true);
 	});
 })();
