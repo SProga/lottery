@@ -1,5 +1,6 @@
 (function () {
 	let input = document.querySelector("input");
+	let $mega_six_container = $(".mega_six_container");
 	//input event Handler
 	input.addEventListener("change", () => {
 		let files = input.files; //property of the <input type="file" /> element that returns an array of file(s) uploaded
@@ -13,10 +14,10 @@
 			// e will hold the file that was passed in
 			console.dir(e.target); //target refers to the file, check console in browser
 			const file = e.target.result; //the file will always be stored in this property on the e.target (object)
-
+			console.log(file);
 			const lines = file.split(/\r\n|\n/); //split the file by return carriage or by newline which will return an array of split values
 			console.log("the array containing each line of the text file below");
-
+			console.dir(lines);
 			let arr = [];
 			for (let x = 0; x < lines.length; x++) {
 				let current_line = lines[x].trim();
@@ -54,13 +55,9 @@
 
 	function displayNumbers(numbers_sorted, options) {
 		let highest_to_lowest = numbers_sorted.reverse();
-		let $mega_six_container = $(".mega_six_container");
-
+		$mega_six_container.html("");
 		highest_to_lowest.forEach((set) => {
-			let $wrapper = $mega_six_container
-				.find(".number_template")
-				.clone(true)
-				.children();
+			let $wrapper = $(".number_template").clone(true).children();
 			let $number = $wrapper.find(".number");
 			randomColor($number);
 			$number.text(set[0]);
