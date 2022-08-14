@@ -18,9 +18,18 @@
 			const lines = file.split(/\r\n|\n/); //split the file by return carriage or by newline which will return an array of split values
 			let arr = [];
 			for (let x = 0; x < lines.length; x++) {
-				let current_line = lines[x].trim();
-				let game = current_line.split(/\s+/);
-				arr.push(game);
+				try {
+					let current_line = lines[x].trim();
+					let game = current_line.split(/\s+/);
+					if (game.length !== 6) {
+						throw new Error(
+							" The length of a line in the file is not equal to 6 numbers"
+						);
+					}
+					arr.push(game);
+				} catch (e) {
+					errorHandler(e);
+				}
 			}
 			calculateOccurrence(arr);
 		};
@@ -40,18 +49,7 @@
 					occurrences[num]++;
 				});
 			} catch (e) {
-				$mega_six_container.html("");
-				let $errorModal = $(".error_modal");
-				$errorModal.removeClass("d-none");
-				$errorModal.append(`<div class="error">
-						<div class="error_message">
-							<b>Error!</b> ${e}
-							<div class="button_text text-right">
-								<button class="btn_close btn btn-danger px-4">Close</button>
-							</div>
-						</div>
-					</div>`);
-				throw e;
+				errorHandler(e);
 			}
 		});
 		let numbers_sorted = orderByHighest(occurrences);
@@ -100,6 +98,20 @@
 		$number.css("background-color", `rgb(${r},${g},${b})`);
 	}
 
+	function errorHandler(e) {
+		$mega_six_container.html("");
+		let $errorModal = $(".error_modal");
+		$errorModal.removeClass("d-none");
+		$errorModal.append(`<div class="error">
+						<div class="error_message">
+							<b>Error!</b> ${e}
+							<div class="button_text text-right">
+								<button class="btn_close btn btn-danger px-4">Close</button>
+							</div>
+						</div>
+					</div>`);
+		throw e;
+	}
 	$app.on("click", ".btn_close", function () {
 		location.reload(true);
 	});
