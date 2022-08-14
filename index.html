@@ -28,49 +28,52 @@
 		<title>Lottery Winning Numbers</title>
 	</head>
 	<body>
-		<h1 class="heading">
-			<img
-				class="img_logo"
-				src="https://www.mybarbadoslottery.com/themes/igt/assets/img/logo-barbados.png"
-				alt="Barbados"
-			/>Winning Lottery Numbers
-		</h1>
-		<h2 class="text_highlight text-center">
-			Numbers of the Lottery Occurrences From Highest to Lowest
-		</h2>
-		<p class="instruction_text text-center m-4">
-			<b class="display-4">Instructions</b><br />
-			Click the <b>Download MegaSix Data</b> button. <br />Click on
-			<b>Open File</b>, Open the <b>MegaSix.txt</b> file that was just
-			downloaded in your <b>Downloads</b> folder.<br />You can add more MegaSix
-			draw numbers by adding draw numbers to the
-			<b>MegaSix.txt</b> file.<br />Place each draw on a new line with each of
-			the 6 numbers in that draw separated by a space.
-		</p>
-		<div class="text-center mt-4">
-			<label class="file_input">
-				<div class="btn_open text-white py-3 px-4 rounded">
-					<i class="fa-solid fa-file mr-2 fa-xl"></i> Open File...
-				</div>
-				<input type="file" class="d-none" />
-			</label>
-			<a
-				class="btn_download text-white py-3 px-4 rounded mx-2 d-inline-block"
-				href="./MegaSix.txt"
-				download
-			>
-				<span
-					><i class="fa-solid fa-download mr-2 fa-xl"></i>Download MegaSix
-					Data</span
+		<div class="lottery_app">
+			<div class="error_modal d-none"></div>
+			<h1 class="heading">
+				<img
+					class="img_logo"
+					src="https://www.mybarbadoslottery.com/themes/igt/assets/img/logo-barbados.png"
+					alt="Barbados"
+				/>Winning Lottery Numbers
+			</h1>
+			<h2 class="text_highlight text-center">
+				Numbers of the Lottery Occurrences From Highest to Lowest
+			</h2>
+			<p class="instruction_text text-center m-4">
+				<b class="display-4">Instructions</b><br />
+				Click the <b>Download MegaSix Data</b> button. <br />Click on
+				<b>Open File</b>, Open the <b>MegaSix.txt</b> file that was just
+				downloaded in your <b>Downloads</b> folder.<br />You can add more
+				MegaSix draw numbers by adding draw numbers to the
+				<b>MegaSix.txt</b> file.<br />Place each draw on a new line with each of
+				the 6 numbers in that draw separated by a space.
+			</p>
+			<div class="text-center mt-4">
+				<label class="file_input">
+					<div class="btn_open text-white py-3 px-4 rounded">
+						<i class="fa-solid fa-file mr-2 fa-xl"></i> Open File...
+					</div>
+					<input type="file" class="d-none" />
+				</label>
+				<a
+					class="btn_download text-white py-3 px-4 rounded mx-2 d-inline-block"
+					href="./MegaSix.txt"
+					download
 				>
-			</a>
-		</div>
+					<span
+						><i class="fa-solid fa-download mr-2 fa-xl"></i>Download MegaSix
+						Data</span
+					>
+				</a>
+			</div>
 
-		<div class="mega_six_container"></div>
-		<div class="number_template d-none">
-			<div class="number_wrapper">
-				<div class="number"></div>
-				<div class="occurrences mt-2"></div>
+			<div class="mega_six_container"></div>
+			<div class="number_template d-none">
+				<div class="number_wrapper">
+					<div class="number"></div>
+					<div class="occurrences mt-2"></div>
+				</div>
 			</div>
 		</div>
 

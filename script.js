@@ -1,6 +1,7 @@
 (function () {
 	let input = document.querySelector("input");
 	let $mega_six_container = $(".mega_six_container");
+	let $app = $(".lottery_app");
 	//input event Handler
 	input.addEventListener("change", () => {
 		let files = input.files; //property of the <input type="file" /> element that returns an array of file(s) uploaded
@@ -12,12 +13,9 @@
 		reader.readAsText(file); // this function calls reader.onload and passes the event file as the parameter (e)
 		reader.onload = (e) => {
 			// e will hold the file that was passed in
-			console.dir(e.target); //target refers to the file, check console in browser
 			const file = e.target.result; //the file will always be stored in this property on the e.target (object)
-			console.log(file);
 			const lines = file.split(/\r\n|\n/); //split the file by return carriage or by newline which will return an array of split values
-			console.log("the array containing each line of the text file below");
-			console.dir(lines);
+
 			let arr = [];
 			for (let x = 0; x < lines.length; x++) {
 				let current_line = lines[x].trim();
@@ -31,12 +29,30 @@
 	let occurrences = {};
 	function calculateOccurrence(arr = []) {
 		arr.forEach((lottery_game) => {
-			lottery_game.forEach((num) => {
-				if (!occurrences[num]) {
-					occurrences[num] = 0;
-				}
-				occurrences[num]++;
-			});
+			try {
+				lottery_game.forEach((num) => {
+					if (isNaN(num)) {
+						throw new Error("Invalid tokens found in file");
+					}
+					if (!occurrences[num]) {
+						occurrences[num] = 0;
+					}
+					occurrences[num]++;
+				});
+			} catch (e) {
+				$mega_six_container.html("");
+				let $errorModal = $(".error_modal");
+				$errorModal.removeClass("d-none");
+				$errorModal.append(`<div class="error">
+						<div class="error_message">
+							<b>Error!</b> ${e}
+							<div class="button_text text-right">
+								<button class="btn_close btn btn-danger px-4">Close</button>
+							</div>
+						</div>
+					</div>`);
+				throw e;
+			}
 		});
 		let numbers_sorted = orderByHighest(occurrences);
 		displayNumbers(numbers_sorted);
@@ -80,4 +96,8 @@
 			$number.css("color", `black`);
 		}
 	}
+
+	$app.on("click", ".btn_close", function () {
+		location.reload();
+	});
 })();

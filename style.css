@@ -117,3 +117,30 @@ button {
 .instruction_text {
 	font-size: 16px;
 }
+
+.error_modal {
+	height: 100%;
+	width: 100%;
+	inset: 0;
+	position: absolute;
+	background-color: rgba(97, 96, 96, 0.397);
+	z-index: 99999999;
+}
+
+.error {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 40px;
+	background-color: white;
+	font-size: 18px;
+	border-radius: 10px;
+}
+.button_text > button {
+	font-size: 20px;
+	border: 1px solid #ccc;
+}
+.btn_close {
+	transform: translateY(20px);
+}
