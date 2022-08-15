@@ -13,12 +13,15 @@ html {
 }
 
 body {
+	display: flex;
+	flex-direction: column;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Montserrat", sans-serif;
 	height: 100%;
 	background-color: rgb(238, 235, 231);
+	min-height: 100vh;
 }
 
 a,
@@ -143,4 +146,21 @@ button {
 }
 .btn_close {
 	transform: translateY(20px);
+}
+
+.footer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding: 20px;
+	background: #0f0c29; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#24243e,
+		#302b63,
+		#0f0c29
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	color: white;
+	margin-top: auto;
+	font-size: 14px;
 }
